@@ -3,6 +3,7 @@ import math as m
 import numpy as np
 from scipy.io import loadmat
 import platform
+import pdb
 
 is_windows = platform.system() == "Windows"
 
@@ -14,8 +15,9 @@ if not is_windows:
 
 # BFM 3D face model
 class BFM():
-	def __init__(self,model_path = './BFM/BFM_model_front.mat'):
+	def __init__(self,model_path = '/home/guoming/DATA/MSRA-Deep3DFaceReconstruction/BFM/BFM_model_front.mat'):
 		model = loadmat(model_path)
+		pdb.set_trace()
 		self.meanshape = tf.constant(model['meanshape']) # mean face shape. [3*N,1]
 		self.idBase = tf.constant(model['idBase']) # identity basis. [3*N,80]
 		self.exBase = tf.constant(model['exBase'].astype(np.float32)) # expression basis. [3*N,64]
